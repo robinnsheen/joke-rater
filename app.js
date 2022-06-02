@@ -1,14 +1,11 @@
 "use strict";
 
-const scores = {};
-
 const SCORE_REGEX = "[0-9]+";
 
 function handleClickLike (evt) {
     if ($(evt.target).hasClass("like")) {
         let scoreDiv = $(evt.target).siblings(".score");
         let score = Number(scoreDiv.text().match(SCORE_REGEX));
-        console.log(score);
         scoreDiv.text(`${score+1} Likes`);
     }
 
