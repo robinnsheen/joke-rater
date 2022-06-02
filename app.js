@@ -2,11 +2,14 @@
 
 const scores = {};
 
+const SCORE_REGEX = "[0-9]+";
+
 function handleClickLike (evt) {
     if ($(evt.target).hasClass("like")) {
         let scoreDiv = $(evt.target).siblings(".score");
-        let score = Number(scoreDiv.text())+1;
-        scoreDiv.text(score);
+        let score = Number(scoreDiv.text().match(SCORE_REGEX));
+        console.log(score);
+        scoreDiv.text(`${score+1} Likes`);
     }
 
 }
@@ -14,8 +17,8 @@ function handleClickLike (evt) {
 function handleClickDislike (evt) {
     if ($(evt.target).hasClass("dislike")) {
         let scoreDiv = $(evt.target).siblings(".score");
-        let score = Number(scoreDiv.text());
-        if (score > 0) scoreDiv.text(score-1);
+        let score = Number(scoreDiv.text().match(SCORE_REGEX));
+        if (score > 0) scoreDiv.text(`${score-1} Likes`);
     }
 
 }
@@ -35,7 +38,7 @@ function createDislike() {
 }
 
 function createScore() {
-    let scoreDiv = $("<div></div").text(0)
+    let scoreDiv = $("<div></div").text(0+" Likes")
                                   .attr("class", "score");
 
     return scoreDiv;
