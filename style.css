@@ -1,8 +1,11 @@
-.jokes div {
-    display: inline-block;
-    margin: 1em;
+.score {
+    text-align: right;
 }
 
-.btn {
+.jokediv {
+    margin-bottom: 3em;
+}
 
+.dislike {
+    background-color: red;
 }
